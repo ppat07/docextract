@@ -1,4 +1,5 @@
 import io
+import os
 import traceback
 from pathlib import Path
 
@@ -33,7 +34,7 @@ IMAGE_TYPES = {
 
 PDF_TYPES = {"application/pdf"}
 
-STATIC_DIR = Path(__file__).resolve().parent.parent.parent / "static"
+STATIC_DIR = Path(os.environ.get("DOCEXTRACT_STATIC_DIR", Path(__file__).resolve().parent.parent.parent / "static"))
 
 
 def verify_api_key(x_api_key: str = Header(...)) -> str:

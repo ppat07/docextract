@@ -98,8 +98,13 @@
     <div class="section" style="padding-top:0;padding-bottom:0;">
         <h2>Quick Start</h2>
         <p style="text-align:center; margin-bottom:2rem;">Get your API key and start extracting in under a minute.</p>
-<pre><code># Extract data from an invoice image
-curl -X POST https://your-domain.com/extract \
+<pre><code># 1. Sign up and get your API key
+curl -X POST https://docextract.onrender.com/billing/signup \
+  -H "Content-Type: application/json" \
+  -d '{"email": "you@example.com"}'
+
+# 2. Extract data from an invoice
+curl -X POST https://docextract.onrender.com/extract \
   -H "x-api-key: YOUR_API_KEY" \
   -F "file=@invoice.pdf"
 
@@ -142,9 +147,26 @@ curl -X POST https://your-domain.com/extract \
         </tr>
     </table>
 
-    <h3>GET /health</h3>
+    <h3 style="margin-top:2rem;">POST /billing/signup</h3>
+    <p style="margin:0.5rem 0 1rem;">Create an account and get an API key.</p>
+    <table style="width:100%; border-collapse:collapse; margin-bottom:2rem;">
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.5rem; font-weight:600;">Body</td>
+            <td style="padding:0.5rem;"><code>{"email": "you@example.com"}</code></td>
+        </tr>
+        <tr>
+            <td style="padding:0.5rem; font-weight:600;">Returns</td>
+            <td style="padding:0.5rem;">Your API key (save it — shown only once)</td>
+        </tr>
+    </table>
+
+    <h3>GET /billing/usage</h3>
+    <p style="margin:0.5rem 0 1rem;">Check your usage and estimated charges.</p>
+    <pre><code>curl -H "x-api-key: YOUR_API_KEY" https://docextract.onrender.com/billing/usage</code></pre>
+
+    <h3 style="margin-top:2rem;">GET /health</h3>
     <p style="margin:0.5rem 0 1rem;">Health check endpoint.</p>
-    <pre><code>curl https://your-domain.com/health
+    <pre><code>curl https://docextract.onrender.com/health
 # {"status": "ok"}</code></pre>
 </div>
 

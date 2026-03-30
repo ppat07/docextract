@@ -2,7 +2,7 @@ services:
   - type: web
     name: docextract
     runtime: docker
-    plan: starter
+    plan: standard
     healthCheckPath: /health
     disk:
       name: docextract-data

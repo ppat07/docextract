@@ -3,10 +3,10 @@ FROM python:3.11-slim
 WORKDIR /app
 
 COPY pyproject.toml .
-RUN pip install --no-cache-dir .
-
 COPY src/ src/
 COPY static/ static/
+
+RUN pip install --no-cache-dir .
 
 # Persistent data directory for SQLite (mount a volume here in production)
 RUN mkdir -p /data

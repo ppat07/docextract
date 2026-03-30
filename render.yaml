@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: docextract
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PRICE_ID
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: DOCEXTRACT_API_KEYS
+        sync: false

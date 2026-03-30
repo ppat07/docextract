@@ -1,0 +1,27 @@
+[project]
+name = "docextract"
+version = "0.1.0"
+description = "AI-powered invoice and receipt data extraction API"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "python-multipart>=0.0.18",
+    "anthropic>=0.52",
+    "python-dotenv>=1.0",
+    "pydantic>=2.10",
+    "PyPDF2>=3.0",
+    "Pillow>=11.0",
+    "stripe>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "httpx>=0.28",
+    "pytest-asyncio>=0.25",
+]
+
+[build-system]
+requires = ["setuptools>=75.0"]
+build-backend = "setuptools.backends._legacy:_Backend"

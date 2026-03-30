@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocExtract — AI-Powered Invoice Data Extraction</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1a1a2e; line-height: 1.6; }
+        .hero { background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); color: #fff; padding: 5rem 2rem; text-align: center; }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+        .cta { display: inline-block; background: #6c63ff; color: #fff; padding: 0.9rem 2.5rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: background 0.2s; }
+        .cta:hover { background: #5a52d5; }
+        .section { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+        .section h2 { font-size: 2rem; margin-bottom: 1.5rem; text-align: center; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature { background: #f8f9fa; border-radius: 8px; padding: 2rem; }
+        .feature h3 { margin-bottom: 0.5rem; color: #302b63; }
+        .pricing-card { background: #f8f9fa; border: 2px solid #6c63ff; border-radius: 12px; padding: 3rem; text-align: center; max-width: 400px; margin: 2rem auto; }
+        .pricing-card .price { font-size: 3rem; font-weight: 700; color: #302b63; }
+        .pricing-card .unit { font-size: 1rem; color: #666; }
+        .pricing-card ul { list-style: none; margin: 1.5rem 0; text-align: left; }
+        .pricing-card li { padding: 0.4rem 0; }
+        .pricing-card li::before { content: "✓ "; color: #6c63ff; font-weight: 700; }
+        pre { background: #1a1a2e; color: #e0e0e0; padding: 1.5rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; line-height: 1.5; }
+        code { font-family: 'SF Mono', 'Fira Code', monospace; }
+        .try-section { background: #f0efff; padding: 4rem 2rem; }
+        footer { background: #1a1a2e; color: #aaa; text-align: center; padding: 2rem; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>DocExtract</h1>
+    <p>Upload an invoice, receipt, or bill. Get clean, structured JSON back in seconds. Powered by AI.</p>
+    <a href="#try" class="cta">Try the API</a>
+</div>
+
+<div class="section">
+    <h2>How It Works</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>1. Upload</h3>
+            <p>Send any PDF, image, or text file of an invoice or receipt to our API endpoint.</p>
+        </div>
+        <div class="feature">
+            <h3>2. Extract</h3>
+            <p>Our AI reads and understands the document, extracting vendor info, line items, totals, dates, and more.</p>
+        </div>
+        <div class="feature">
+            <h3>3. Get JSON</h3>
+            <p>Receive a clean, structured JSON response ready to feed into your accounting, ERP, or automation pipeline.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>What Gets Extracted</h2>
+    <div class="features">
+        <div class="feature">
+            <h3>Vendor &amp; Customer</h3>
+            <p>Names, full addresses, and contact information for both parties.</p>
+        </div>
+        <div class="feature">
+            <h3>Line Items</h3>
+            <p>Each item with description, quantity, unit price, and line total.</p>
+        </div>
+        <div class="feature">
+            <h3>Financials</h3>
+            <p>Subtotal, tax rate, tax amount, discounts, total, and amount due.</p>
+        </div>
+        <div class="feature">
+            <h3>Metadata</h3>
+            <p>Invoice number, dates (issued &amp; due), payment terms, currency, and document type.</p>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>Pricing</h2>
+    <div class="pricing-card">
+        <div class="price">$0.25</div>
+        <div class="unit">per document</div>
+        <ul>
+            <li>PDF, PNG, JPEG, GIF, WEBP, and text</li>
+            <li>Up to 10 MB per file</li>
+            <li>Structured JSON response</li>
+            <li>Confidence scoring</li>
+            <li>No monthly minimum</li>
+            <li>Pay only for what you use</li>
+        </ul>
+        <a href="#try" class="cta">Get Started</a>
+    </div>
+</div>
+
+<div class="try-section" id="try">
+    <div class="section" style="padding-top:0;padding-bottom:0;">
+        <h2>Quick Start</h2>
+        <p style="text-align:center; margin-bottom:2rem;">Get your API key and start extracting in under a minute.</p>
+<pre><code># Extract data from an invoice image
+curl -X POST https://your-domain.com/extract \
+  -H "x-api-key: YOUR_API_KEY" \
+  -F "file=@invoice.pdf"
+
+# Response
+{
+  "success": true,
+  "data": {
+    "document_type": "invoice",
+    "vendor_name": "Acme Corp",
+    "invoice_number": "INV-2026-0042",
+    "total": 9765.00,
+    "currency": "USD",
+    "line_items": [...],
+    "confidence": 0.95
+  }
+}</code></pre>
+    </div>
+</div>
+
+<div class="section">
+    <h2>API Reference</h2>
+    <h3 style="margin-top:1rem;">POST /extract</h3>
+    <p style="margin:0.5rem 0 1rem;">Upload a document and receive extracted data.</p>
+    <table style="width:100%; border-collapse:collapse; margin-bottom:2rem;">
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.5rem; font-weight:600;">Header</td>
+            <td style="padding:0.5rem;"><code>x-api-key: YOUR_API_KEY</code></td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.5rem; font-weight:600;">Body</td>
+            <td style="padding:0.5rem;"><code>multipart/form-data</code> with a <code>file</code> field</td>
+        </tr>
+        <tr style="border-bottom:1px solid #ddd;">
+            <td style="padding:0.5rem; font-weight:600;">Formats</td>
+            <td style="padding:0.5rem;">PDF, PNG, JPEG, GIF, WEBP, plain text</td>
+        </tr>
+        <tr>
+            <td style="padding:0.5rem; font-weight:600;">Max size</td>
+            <td style="padding:0.5rem;">10 MB</td>
+        </tr>
+    </table>
+
+    <h3>GET /health</h3>
+    <p style="margin:0.5rem 0 1rem;">Health check endpoint.</p>
+    <pre><code>curl https://your-domain.com/health
+# {"status": "ok"}</code></pre>
+</div>
+
+<footer>
+    &copy; 2026 DocExtract. Built with FastAPI and Claude.
+</footer>
+
+</body>
+</html>

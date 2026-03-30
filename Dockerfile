@@ -8,6 +8,10 @@ RUN pip install --no-cache-dir .
 COPY src/ src/
 COPY static/ static/
 
+# Persistent data directory for SQLite (mount a volume here in production)
+RUN mkdir -p /data
+VOLUME /data
+
 EXPOSE 8000
 
 CMD ["uvicorn", "src.docextract.app:app", "--host", "0.0.0.0", "--port", "8000"]

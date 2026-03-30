@@ -15,3 +15,4 @@ DOCEXTRACT_API_KEYS: Set[str] = set(
 )
 MAX_FILE_SIZE_MB = int(os.environ.get("DOCEXTRACT_MAX_FILE_SIZE_MB", "10"))
 MODEL = os.environ.get("DOCEXTRACT_MODEL", "claude-sonnet-4-20250514")
+DATABASE_PATH = os.environ.get("DOCEXTRACT_DB_PATH", "/data/docextract.db")

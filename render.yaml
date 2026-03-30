@@ -4,6 +4,10 @@ services:
     runtime: docker
     plan: starter
     healthCheckPath: /health
+    disk:
+      name: docextract-data
+      mountPath: /data
+      sizeGB: 1
     envVars:
       - key: ANTHROPIC_API_KEY
         sync: false
